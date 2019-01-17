@@ -1,0 +1,8 @@
+{
+    "apollo-client": {
+        "httpLinkConfig": {
+            "uri": "http://localhost:4000/",
+            "credentials": "same-origin"
+        }
+    }
+}
