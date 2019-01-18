@@ -1,0 +1,8 @@
+figure { display:flex; align-items: center;
+    img { margin-right: $gutter; }
+}
+dl {
+    dt ~ dt, dd ~ dd { margin-top:$gutter/2; }
+    dt { text-align: right; font-weight:bold; clear:left; float:left; width:3*$gutter; margin-right:$gutter; }
+    dd { overflow:hidden; margin-left:0; }
+}

@@ -12,9 +12,19 @@ import '@stencil/state-tunnel';
 import {
   MatchResults,
 } from '@stencil/router';
+import {
+  ICharacter,
+} from './global/apollo-client/marvel-entities';
 
 
 export namespace Components {
+
+  interface AppCharacter {
+    'match': MatchResults;
+  }
+  interface AppCharacterAttributes extends StencilHTMLAttributes {
+    'match'?: MatchResults;
+  }
 
   interface AppHome {}
   interface AppHomeAttributes extends StencilHTMLAttributes {}
@@ -28,21 +38,38 @@ export namespace Components {
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface CharacterCard {
+    'entity': ICharacter;
+  }
+  interface CharacterCardAttributes extends StencilHTMLAttributes {
+    'entity'?: ICharacter;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
+    'AppCharacter': Components.AppCharacter;
     'AppHome': Components.AppHome;
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'CharacterCard': Components.CharacterCard;
   }
 
   interface StencilIntrinsicElements {
+    'app-character': Components.AppCharacterAttributes;
     'app-home': Components.AppHomeAttributes;
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'character-card': Components.CharacterCardAttributes;
   }
 
+
+  interface HTMLAppCharacterElement extends Components.AppCharacter, HTMLStencilElement {}
+  var HTMLAppCharacterElement: {
+    prototype: HTMLAppCharacterElement;
+    new (): HTMLAppCharacterElement;
+  };
 
   interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
   var HTMLAppHomeElement: {
@@ -62,16 +89,26 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLCharacterCardElement extends Components.CharacterCard, HTMLStencilElement {}
+  var HTMLCharacterCardElement: {
+    prototype: HTMLCharacterCardElement;
+    new (): HTMLCharacterCardElement;
+  };
+
   interface HTMLElementTagNameMap {
+    'app-character': HTMLAppCharacterElement
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'character-card': HTMLCharacterCardElement
   }
 
   interface ElementTagNameMap {
+    'app-character': HTMLAppCharacterElement;
     'app-home': HTMLAppHomeElement;
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'character-card': HTMLCharacterCardElement;
   }
 
 
