@@ -17,7 +17,7 @@ export class CharacterCard {
             <figure>
                 {get(this.entity, 'thumbnail', false)
                     ? <img src={ this.entity.thumbnail.resourceURI } alt="character thumbnail" />
-                    : null
+                    : <img class="loading" src="/assets/giphy.gif" alt="loading data" />
                 }
                 <figcaption>
                     <dl>

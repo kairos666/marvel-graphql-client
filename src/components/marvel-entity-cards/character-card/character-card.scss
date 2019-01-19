@@ -6,3 +6,4 @@ dl {
     dt { text-align: right; font-weight:bold; clear:left; float:left; width:3*$gutter; margin-right:$gutter; }
     dd { overflow:hidden; margin-left:0; }
 }
+.loading { @include loading; }
