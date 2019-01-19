@@ -15,7 +15,7 @@ export interface ICharacter {
     id?: string;
     name?: string;
     description?: string;
-    thumbnail?: IImage;
+    thumbnail?: IImage | null;
     comics?: IComicList | null;
     stories?: IStoryList | null;
     events?: IEventList | null;
@@ -29,7 +29,7 @@ export interface IComic {
     description?: string;
     format?: string;
     pageCount?: number;
-    thumbnail?: IImage
+    thumbnail?: IImage | null;
     images?: IImage[]
     characters?: ICharacterList | null;
     creators?: ICreatorList | null;
@@ -44,7 +44,7 @@ export interface ICreator {
     lastName?: string;
     suffix?: string;
     fullName?: string;
-    thumbnail?: IImage;
+    thumbnail?: IImage | null;
     comics?: IComicList | null;
     stories?: IStoryList | null;
     events?: IEventList | null;
@@ -57,7 +57,7 @@ export interface IEvent {
     description?: string;
     start?: string;
     end?: string;
-    thumbnail?: IImage;
+    thumbnail?: IImage | null;
     characters?: ICharacterList | null;
     creators?: ICreatorList | null;
     comics?: IComicList | null;
@@ -74,7 +74,7 @@ export interface ISerie {
     startYear?: number;
     endYear?: number;
     rating?: string;
-    thumbnail?: IImage;
+    thumbnail?: IImage | null;
     characters?: ICharacterList | null;
     creators?: ICreatorList | null;
     comics?: IComicList | null;
@@ -89,7 +89,7 @@ export interface IStory {
     title?: string;
     description?: string;
     type?: string;
-    thumbnail?: IImage;
+    thumbnail?: IImage | null;
     characters?: ICharacterList | null;
     creators?: ICreatorList | null;
     comics?: IComicList | null;

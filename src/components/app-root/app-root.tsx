@@ -1,6 +1,4 @@
-import { Component, Prop } from '@stencil/core';
-import { ApolloClient } from 'apollo-client';
-import getApolloClientInstance from '../../global/apollo-client/apollo-client';
+import { Component } from '@stencil/core';
 
 @Component({
     tag: 'app-root',
@@ -8,12 +6,6 @@ import getApolloClientInstance from '../../global/apollo-client/apollo-client';
     shadow: true
 })
 export class AppRoot {
-    @Prop({ context: 'aClient' }) aClient:ApolloClient<any>;
-
-    componentWillLoad() {
-        this.aClient = getApolloClientInstance();
-    }
-
     render() {
         return (
             <div>

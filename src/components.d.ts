@@ -14,6 +14,11 @@ import {
 } from '@stencil/router';
 import {
   ICharacter,
+  IComic,
+  ICreator,
+  IEvent,
+  ISerie,
+  IStory,
 } from './global/apollo-client/marvel-entities';
 
 
@@ -45,6 +50,41 @@ export namespace Components {
   interface CharacterCardAttributes extends StencilHTMLAttributes {
     'entity'?: ICharacter;
   }
+
+  interface ComicCard {
+    'entity': IComic;
+  }
+  interface ComicCardAttributes extends StencilHTMLAttributes {
+    'entity'?: IComic;
+  }
+
+  interface CreatorCard {
+    'entity': ICreator;
+  }
+  interface CreatorCardAttributes extends StencilHTMLAttributes {
+    'entity'?: ICreator;
+  }
+
+  interface EventCard {
+    'entity': IEvent;
+  }
+  interface EventCardAttributes extends StencilHTMLAttributes {
+    'entity'?: IEvent;
+  }
+
+  interface SerieCard {
+    'entity': ISerie;
+  }
+  interface SerieCardAttributes extends StencilHTMLAttributes {
+    'entity'?: ISerie;
+  }
+
+  interface StoryCard {
+    'entity': IStory;
+  }
+  interface StoryCardAttributes extends StencilHTMLAttributes {
+    'entity'?: IStory;
+  }
 }
 
 declare global {
@@ -54,6 +94,11 @@ declare global {
     'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
     'CharacterCard': Components.CharacterCard;
+    'ComicCard': Components.ComicCard;
+    'CreatorCard': Components.CreatorCard;
+    'EventCard': Components.EventCard;
+    'SerieCard': Components.SerieCard;
+    'StoryCard': Components.StoryCard;
   }
 
   interface StencilIntrinsicElements {
@@ -62,6 +107,11 @@ declare global {
     'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
     'character-card': Components.CharacterCardAttributes;
+    'comic-card': Components.ComicCardAttributes;
+    'creator-card': Components.CreatorCardAttributes;
+    'event-card': Components.EventCardAttributes;
+    'serie-card': Components.SerieCardAttributes;
+    'story-card': Components.StoryCardAttributes;
   }
 
 
@@ -95,12 +145,47 @@ declare global {
     new (): HTMLCharacterCardElement;
   };
 
+  interface HTMLComicCardElement extends Components.ComicCard, HTMLStencilElement {}
+  var HTMLComicCardElement: {
+    prototype: HTMLComicCardElement;
+    new (): HTMLComicCardElement;
+  };
+
+  interface HTMLCreatorCardElement extends Components.CreatorCard, HTMLStencilElement {}
+  var HTMLCreatorCardElement: {
+    prototype: HTMLCreatorCardElement;
+    new (): HTMLCreatorCardElement;
+  };
+
+  interface HTMLEventCardElement extends Components.EventCard, HTMLStencilElement {}
+  var HTMLEventCardElement: {
+    prototype: HTMLEventCardElement;
+    new (): HTMLEventCardElement;
+  };
+
+  interface HTMLSerieCardElement extends Components.SerieCard, HTMLStencilElement {}
+  var HTMLSerieCardElement: {
+    prototype: HTMLSerieCardElement;
+    new (): HTMLSerieCardElement;
+  };
+
+  interface HTMLStoryCardElement extends Components.StoryCard, HTMLStencilElement {}
+  var HTMLStoryCardElement: {
+    prototype: HTMLStoryCardElement;
+    new (): HTMLStoryCardElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-character': HTMLAppCharacterElement
     'app-home': HTMLAppHomeElement
     'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
     'character-card': HTMLCharacterCardElement
+    'comic-card': HTMLComicCardElement
+    'creator-card': HTMLCreatorCardElement
+    'event-card': HTMLEventCardElement
+    'serie-card': HTMLSerieCardElement
+    'story-card': HTMLStoryCardElement
   }
 
   interface ElementTagNameMap {
@@ -109,6 +194,11 @@ declare global {
     'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
     'character-card': HTMLCharacterCardElement;
+    'comic-card': HTMLComicCardElement;
+    'creator-card': HTMLCreatorCardElement;
+    'event-card': HTMLEventCardElement;
+    'serie-card': HTMLSerieCardElement;
+    'story-card': HTMLStoryCardElement;
   }
 
 

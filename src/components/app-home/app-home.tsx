@@ -17,10 +17,8 @@ export class AppHome {
           Check out our docs on <a href='https://stenciljs.com'>stenciljs.com</a> to get started.
         </p>
 
-        <stencil-route-link url='/character/stencil'>
-          <button>
-            Profile page
-          </button>
+        <stencil-route-link url='/character/1009146'>
+          <button>Abomination - Character page</button>
         </stencil-route-link>
       </div>
     );
