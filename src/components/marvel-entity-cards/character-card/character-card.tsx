@@ -1,6 +1,7 @@
 import { Component, Prop } from '@stencil/core';
 import { ICharacter } from '../../../global/apollo-client/marvel-entities';
 import { keysToDefinitionList } from '../../../global/utils';
+import get from 'lodash/get';
 
 @Component({
     tag: 'character-card',
@@ -14,7 +15,7 @@ export class CharacterCard {
     render() {
         return (
             <figure>
-                {this.entity.thumbnail
+                {get(this.entity, 'thumbnail', false)
                     ? <img src={ this.entity.thumbnail.resourceURI } alt="character thumbnail" />
                     : null
                 }

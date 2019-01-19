@@ -19,10 +19,12 @@
     "apollo-link-http": "^1.5.9",
     "apollo-link-state": "^0.4.2",
     "graphql": "^14.1.1",
-    "graphql-tag": "^2.10.0"
+    "graphql-tag": "^2.10.0",
+    "lodash": "^4.17.11"
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil/sass": "^0.1.1"
+    "@stencil/sass": "^0.1.1",
+    "@types/lodash": "^4.14.120"
   }
 }
