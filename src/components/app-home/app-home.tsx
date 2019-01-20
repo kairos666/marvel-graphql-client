@@ -3,6 +3,7 @@ import { ApolloClient } from 'apollo-client';
 import getApolloClientInstance from '../../global/apollo-client/apollo-client';
 import gql from 'graphql-tag'
 import { ICharacterList, IList } from '../../global/apollo-client/marvel-entities';
+import { RouterHistory } from '@stencil/router';
 
 @Component({
     tag: 'app-home',
@@ -11,6 +12,7 @@ import { ICharacterList, IList } from '../../global/apollo-client/marvel-entitie
 })
 export class AppHome {
     @Prop({ context: 'aClient' }) aClient:ApolloClient<any>;
+    @Prop() history: RouterHistory;
     @State() characters:ICharacterList;
 
     componentWillLoad() {
@@ -58,6 +60,14 @@ export class AppHome {
                 <entity-list entitiesList={ this.characters }></entity-list>
             </div>
         );
+    }
+
+    @Listen('goToEntityDetail')
+    linkToEntityDetailHandler(evt:CustomEvent) {
+        const entityType:string = evt.detail.type;
+        const entityId:string = evt.detail.id;
+
+        this.history.push(`/${entityType}/${entityId}`);
     }
 
     @Listen('paginationOccured')

@@ -1,2 +1,6 @@
-.entity-list_list-container { list-style: none; padding:0; margin:$gutter 0; }
+.entity-list_list-container { list-style: none; padding:0; margin:$gutter 0;
+    > * { margin-top:$gutter/2; margin-bottom:$gutter/2; cursor:pointer;
+        &:hover, &:focus { background-color: rgba(0, 0, 0, .1); }
+    }
+}
 .loading { @include loading; }

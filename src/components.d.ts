@@ -11,6 +11,7 @@ import '@stencil/router';
 import '@stencil/state-tunnel';
 import {
   MatchResults,
+  RouterHistory,
 } from '@stencil/router';
 import {
   ICharacter,
@@ -32,8 +33,12 @@ export namespace Components {
     'match'?: MatchResults;
   }
 
-  interface AppHome {}
-  interface AppHomeAttributes extends StencilHTMLAttributes {}
+  interface AppHome {
+    'history': RouterHistory;
+  }
+  interface AppHomeAttributes extends StencilHTMLAttributes {
+    'history'?: RouterHistory;
+  }
 
   interface AppProfile {
     'match': MatchResults;
@@ -71,6 +76,7 @@ export namespace Components {
   }
   interface EntityListAttributes extends StencilHTMLAttributes {
     'entitiesList'?: IList;
+    'onGoToEntityDetail'?: (event: CustomEvent) => void;
   }
 
   interface EventCard {
