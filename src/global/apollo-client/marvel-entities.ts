@@ -4,15 +4,19 @@ export interface IImage {
     resourceURI?: string;
 }
 
+export interface IEntity {
+    id?: string;
+}
+
 export interface IList {
     offset?: number;
     limit?: number;
     total?: number;
     count?: number;
+    results?: IEntity[] | null;
 }
 
-export interface ICharacter {
-    id?: string;
+export interface ICharacter extends IEntity {
     name?: string;
     description?: string;
     thumbnail?: IImage | null;
@@ -22,8 +26,7 @@ export interface ICharacter {
     series?: ISerieList | null;
 }
 
-export interface IComic {
-    id?: string;
+export interface IComic extends IEntity {
     title?: string;
     issueNumber?: number;
     description?: string;
@@ -37,8 +40,7 @@ export interface IComic {
     events?: IEventList | null;
 }
 
-export interface ICreator {
-    id?: string;
+export interface ICreator extends IEntity {
     firstName?: string;
     middleName?: string;
     lastName?: string;
@@ -51,8 +53,7 @@ export interface ICreator {
     series?: ISerieList | null;
 }
 
-export interface IEvent {
-    id?: string;
+export interface IEvent extends IEntity {
     title?: string;
     description?: string;
     start?: string;
@@ -67,8 +68,7 @@ export interface IEvent {
     previous?: IEvent;
 }
 
-export interface ISerie {
-    id?: string;
+export interface ISerie extends IEntity {
     title?: string;
     description?: string;
     startYear?: number;
@@ -84,8 +84,7 @@ export interface ISerie {
     previous?: ISerie;
 }
 
-export interface IStory {
-    id?: string;
+export interface IStory extends IEntity {
     title?: string;
     description?: string;
     type?: string;

@@ -34,7 +34,7 @@ export class AppCharacter {
             `
         })
         .then(resp => { this.character = (resp as any).data.character; })
-        .catch(error => console.error(error));
+        .catch(error => console.warn(error));
     }
 
     private mockComic = {

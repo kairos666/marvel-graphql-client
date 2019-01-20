@@ -17,6 +17,7 @@ import {
   IComic,
   ICreator,
   IEvent,
+  IList,
   ISerie,
   IStory,
 } from './global/apollo-client/marvel-entities';
@@ -65,6 +66,13 @@ export namespace Components {
     'entity'?: ICreator;
   }
 
+  interface EntityList {
+    'entitiesList': IList;
+  }
+  interface EntityListAttributes extends StencilHTMLAttributes {
+    'entitiesList'?: IList;
+  }
+
   interface EventCard {
     'entity': IEvent;
   }
@@ -85,6 +93,14 @@ export namespace Components {
   interface StoryCardAttributes extends StencilHTMLAttributes {
     'entity'?: IStory;
   }
+
+  interface NanoPagination {
+    'paginationData': IList;
+  }
+  interface NanoPaginationAttributes extends StencilHTMLAttributes {
+    'onPaginationOccured'?: (event: CustomEvent) => void;
+    'paginationData'?: IList;
+  }
 }
 
 declare global {
@@ -96,9 +112,11 @@ declare global {
     'CharacterCard': Components.CharacterCard;
     'ComicCard': Components.ComicCard;
     'CreatorCard': Components.CreatorCard;
+    'EntityList': Components.EntityList;
     'EventCard': Components.EventCard;
     'SerieCard': Components.SerieCard;
     'StoryCard': Components.StoryCard;
+    'NanoPagination': Components.NanoPagination;
   }
 
   interface StencilIntrinsicElements {
@@ -109,9 +127,11 @@ declare global {
     'character-card': Components.CharacterCardAttributes;
     'comic-card': Components.ComicCardAttributes;
     'creator-card': Components.CreatorCardAttributes;
+    'entity-list': Components.EntityListAttributes;
     'event-card': Components.EventCardAttributes;
     'serie-card': Components.SerieCardAttributes;
     'story-card': Components.StoryCardAttributes;
+    'nano-pagination': Components.NanoPaginationAttributes;
   }
 
 
@@ -157,6 +177,12 @@ declare global {
     new (): HTMLCreatorCardElement;
   };
 
+  interface HTMLEntityListElement extends Components.EntityList, HTMLStencilElement {}
+  var HTMLEntityListElement: {
+    prototype: HTMLEntityListElement;
+    new (): HTMLEntityListElement;
+  };
+
   interface HTMLEventCardElement extends Components.EventCard, HTMLStencilElement {}
   var HTMLEventCardElement: {
     prototype: HTMLEventCardElement;
@@ -175,6 +201,12 @@ declare global {
     new (): HTMLStoryCardElement;
   };
 
+  interface HTMLNanoPaginationElement extends Components.NanoPagination, HTMLStencilElement {}
+  var HTMLNanoPaginationElement: {
+    prototype: HTMLNanoPaginationElement;
+    new (): HTMLNanoPaginationElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-character': HTMLAppCharacterElement
     'app-home': HTMLAppHomeElement
@@ -183,9 +215,11 @@ declare global {
     'character-card': HTMLCharacterCardElement
     'comic-card': HTMLComicCardElement
     'creator-card': HTMLCreatorCardElement
+    'entity-list': HTMLEntityListElement
     'event-card': HTMLEventCardElement
     'serie-card': HTMLSerieCardElement
     'story-card': HTMLStoryCardElement
+    'nano-pagination': HTMLNanoPaginationElement
   }
 
   interface ElementTagNameMap {
@@ -196,9 +230,11 @@ declare global {
     'character-card': HTMLCharacterCardElement;
     'comic-card': HTMLComicCardElement;
     'creator-card': HTMLCreatorCardElement;
+    'entity-list': HTMLEntityListElement;
     'event-card': HTMLEventCardElement;
     'serie-card': HTMLSerieCardElement;
     'story-card': HTMLStoryCardElement;
+    'nano-pagination': HTMLNanoPaginationElement;
   }
 
 
