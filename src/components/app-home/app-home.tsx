@@ -1,9 +1,9 @@
 import { Component, Prop, State, Listen } from '@stencil/core';
 import { ApolloClient } from 'apollo-client';
 import getApolloClientInstance from '../../global/apollo-client/apollo-client';
-import gql from 'graphql-tag'
-import { ICharacterList, IList } from '../../global/apollo-client/marvel-entities';
+import { ICharacterList, IList, ImageSizes } from '../../global/apollo-client/marvel-entities';
 import { RouterHistory } from '@stencil/router';
+import { getAllCharactersPaginatedQueryOptions } from '../../global/apollo-client/query-helper';
 
 @Component({
     tag: 'app-home',
@@ -19,28 +19,9 @@ export class AppHome {
         this.aClient = getApolloClientInstance();
         
         // fetch character
-        this.aClient.query({
-            query: gql`
-                query getAllCharacters {
-                    characters {
-                        offset
-                        count
-                        total
-                        limit
-                        results {
-                            id
-                            name
-                            description
-                            thumbnail {
-                                resourceURI(size: PORTRAIT_MEDIUM)
-                            }
-                        }
-                    }
-                }
-            `
-        })
-        .then(resp => { this.characters = (resp as any).data.characters; })
-        .catch(error => console.warn(error));
+        this.aClient.query(getAllCharactersPaginatedQueryOptions(ImageSizes.PORTRAIT_MEDIUM))
+            .then(resp => { this.characters = (resp as any).data.characters; })
+            .catch(error => console.warn(error));
     }
 
     render() {
@@ -75,27 +56,8 @@ export class AppHome {
         const paginationOptions:IList = evt.detail;
         
         // update data
-        this.aClient.query({
-            query: gql`
-                query getAllCharacters {
-                    characters(offset: ${paginationOptions.offset}, limit: ${paginationOptions.limit}) {
-                        offset
-                        count
-                        total
-                        limit
-                        results {
-                            id
-                            name
-                            description
-                            thumbnail {
-                                resourceURI(size: PORTRAIT_MEDIUM)
-                            }
-                        }
-                    }
-                }
-            `
-        })
-        .then(resp => { this.characters = (resp as any).data.characters; })
-        .catch(error => console.warn(error));
+        this.aClient.query(getAllCharactersPaginatedQueryOptions(ImageSizes.PORTRAIT_MEDIUM, paginationOptions.offset, paginationOptions.limit))
+            .then(resp => { this.characters = (resp as any).data.characters; })
+            .catch(error => console.warn(error));
     }
 }

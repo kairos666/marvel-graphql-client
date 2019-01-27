@@ -2,8 +2,8 @@ import { Component, Prop, State } from '@stencil/core';
 import { MatchResults } from '@stencil/router';
 import { ApolloClient } from 'apollo-client';
 import getApolloClientInstance from '../../global/apollo-client/apollo-client';
-import { ICharacter } from '../../global/apollo-client/marvel-entities';
-import gql from 'graphql-tag';
+import { ICharacter, ImageSizes } from '../../global/apollo-client/marvel-entities';
+import { getCharacterQueryOptions } from '../../global/apollo-client/query-helper';
 
 @Component({
     tag: 'app-character',
@@ -19,22 +19,9 @@ export class AppCharacter {
         this.aClient = getApolloClientInstance();
         
         // fetch character
-        this.aClient.query({
-            query: gql`
-                query specificCharacter {
-                    character(id: ${this.match.params.id}) {
-                        id
-                        name
-                        description
-                        thumbnail {
-                            resourceURI(size: PORTRAIT_FANTASTIC)
-                        }
-                    }
-                }
-            `
-        })
-        .then(resp => { this.character = (resp as any).data.character; })
-        .catch(error => console.warn(error));
+        this.aClient.query(getCharacterQueryOptions(this.match.params.id, ImageSizes.PORTRAIT_FANTASTIC))
+            .then(resp => { this.character = (resp as any).data.character; })
+            .catch(error => console.warn(error));
     }
 
     private mockComic = {
